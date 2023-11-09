@@ -6,7 +6,6 @@
 [Overview]()
 [Data Source]()
 [Methodology]()
-[Analysis]()
 [Results]()
 [Summary]()
 
@@ -18,7 +17,6 @@ In today's data-driven world, the application of artificial intelligence and mac
 Neural networks are computational models inspired by the human brain's structure and functioning. They consist of interconnected nodes (neurons) organized into layers, namely the input layer, hidden layers, and the output layer. Neural networks excel in their ability to learn intricate patterns and relationships within data, making them well-suited for a wide range of applications, including binary classification.
 
 ![0_IlHu39jf2c7QC4kn](https://github.com/dspataru/deep-learning-challenge/assets/61765352/cb79b1cf-b256-4de8-99c6-951e78e0fa07)
-
 
 Neural networks have gained prominence in recent years due to their capacity to handle complex, high-dimensional datasets. They are particularly adept at discerning patterns in data that may be challenging for traditional statistical models to capture. This makes them an ideal choice for addressing problems like predicting the success of charity funding applicants, where a multitude of factors can influence the outcome.
 
@@ -74,23 +72,46 @@ We evaluated the model's performance using the test data, measuring loss and acc
 3. **Save and Export**: The results of the optimized model are saved and exported to an HDF5 file named "AlphabetSoupCharity_Optimization.h5".
 
 
-## Analysis
+## Results and Analysis
 
-### Purpose of the Analysis
-The purpose of this analysis is to develop a neural network model that predicts the success of charity applicants. This model will help the charity organization make informed decisions about funding, thus maximizing the impact of their resources.
+The initial model comprised of two hidden layers, input dimension = 43, and used the tanh function as the activation function. The number of neurons in the first hidden layer is 80, and the second hidden layer is 30. After evaluating the model with the test data, the accuracy of the model was calculated to be 0.7258 or 72.58%. The loss was calculated to be 0.5610.
 
-### Results
+Three different methods were used in an attempt to increase the accuracy of the model:
+1. Changing Input Data & Reducing the Cutoff Value of Applications:
+  * Dropping CLASSIFICATION and SPECIAL_CONSIDERATIONS columns in addition to EIN and NAME.
+  * Cutoff value for apps is 10.
+  * Activation function: relu.
+  * NUmber of hidden layers: 2.
+2. Reducing the Cutoff Value for Applications and Classification, and Increasing Hidden Layers.
+  * Dropping only the EIN and NAME columns.
+  * Cutoff value for apps is 10.
+  * Cutoff value for class is 70.
+  * Activation function: tanh.
+  * Number of hidden layers: 3.
+3. Hyperparameter Tuning
+  * A function is written to create a model with different parameter values.
+  * The function allows kerastuner to decide which activation function to use in the hidden layers, the number of neurons in the first layer, and the number of hidden layers and neurons in hidden layers.
+  * Constraints for the different input parameters:
+      * Activation functions: relu & tanh.
+      * Number of neurons for the first layer: between 1 and 30, incrementing by 5 each iteration.
+      * Number of hidden layers: between 1 and 5.
+      * Number of neurons in each hidden layer: between 1 and 30, incrementing by 5 each iteration.
+  * Here we use the same input data as the original model uses.
 
-Question 1: Did preprocessing the data improve model performance?
-Question 2: What is the structure of the final neural network model?
-Question 3: What are the model's training loss and accuracy?
-Question 4: Did optimization improve the model?
-Question 5: What is the accuracy of the optimized model?
-Question 6: How could a different model be used to solve the same problem?
+#### Summary of Results
 
-## Summary
+![results_summary](https://github.com/dspataru/deep-learning-challenge/assets/61765352/993f02a8-9c21-4a62-9dac-a54a5ccfd82a)
 
-
-
+The target model performance of 75% was not achieved with the different optimization method attempts.
 
 ## Conclusion
+
+The highest accuracy the deep learning model was able to achieve based on the dataset provided was 72.77%. Several optimization methods were explored in an attempt to increase the accuracy of the model. Several observations were made:
+1. Reducing the number of features had a negative effect on the performance of the model.
+2. Hyperparameter optimization within the bounds that were set for each parameter was not successful in finding a set of parameters for the model that improved the accuracy from the original model.
+3. Increasing the number of hidden layers did not improve the accuracy of the model.
+4. Changing the activation function did not have a significant impact on the accuracy of the model.
+
+It is possible that if the search space for the hyperparamitization method was increased, we may have been able to find more optimal parameters for the model to achieve the target accuracy of 75%. There are other models that could have been explored outside of neural networks, which include, decision trees, random forests, K-nearest neighbors, support vector machines, and ensemble methods. 
+
+The choice of the appropriate model depends on factors like dataset size, feature types, computational resources, interpretability, and the specific requirements of the binary classification problem. In the future, it would be good to explore the different models and compare their performance to the neural network models explored in this project.
