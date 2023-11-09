@@ -3,11 +3,12 @@
 ![Thin--1--7](https://github.com/dspataru/deep-learning-challenge/assets/61765352/219f0078-fe95-4ef0-8c6d-eeb51703b7aa)
 
 ## Table of Contents
-[Overview]()
-[Data Source]()
-[Methodology]()
-[Results]()
-[Summary]()
+* [Background]()
+* [Overview]()
+* [Data Source]()
+* [Methodology]()
+* [Results]()
+* [Summary]()
 
 ## Background
 
@@ -24,6 +25,9 @@ Neural networks have gained prominence in recent years due to their capacity to 
 Binary classification is a common problem in machine learning, where the goal is to categorize data into one of two classes or outcomes. Neural networks have proven to be highly effective in this context due to their ability to model complex relationships, identify nonlinear patterns, and adapt to different types of data.
 
 In the realm of charity funding, binary classification is often applied to predict whether an applicant will be successful if funded. Neural networks can analyze a diverse range of features, such as applicant demographics, financial information, and project details, to make informed predictions. By learning from historical data, neural networks can assist charity organizations in making objective decisions about allocating their resources.
+
+#### Key Words
+deep learning model, neural networks, optimization, jupyter notebook, google colab, pythons, binary classification, pandas, tensorflow, keras_tuner, sklearn, train and test split, standardscalar, machine learning models, funding prediction, hyperparameter tuning, hidden layers, activiation function
 
 ## Overview
 
@@ -45,6 +49,11 @@ The data is provided by Alphabet Soup's business team in the form of a CSV conta
 * ASK_AMT—Funding amount requested
 * IS_SUCCESSFUL—Was the money used effectively?
 
+Below is a snapshot of the first few columns and rows of the dataset:
+
+![dataset](https://github.com/dspataru/deep-learning-challenge/assets/61765352/20ae8d79-0b69-4787-8f51-33951007c607)
+
+
 ## Methodology
 
 ### Preprocess the Data
@@ -59,12 +68,37 @@ Pandas and scikit-learn's `StandardScaler()` function was used to preprocess the
 6. **Splitting Data**: The data was split into training and testing datasets to train and evaluate the model's performance.
 7. **Scaling Data**: The data was scaled using a StandardScaler fitted to the training data, ensuring that all features have a similar scale for model convergence.
 
+Below is a snippet of the data after pre-processing:
+
+![data_cleaned](https://github.com/dspataru/deep-learning-challenge/assets/61765352/b6311231-c966-4747-87db-e0841615fab1)
+
+
 ### Compile, Train, and Evaluate the Model
 1. **Neural Network Model**: We designed a neural network model with input features and nodes in each layer using TensorFlow and Keras.
 2. **Model Architecture**: The neural network model consists of an input layer, one hidden layer with ReLU activation, and an output layer with a sigmoid activation function.
 5. **Training and Evaluation**: The model was compiled and trained with a callback to save weights every five epochs.
 We evaluated the model's performance using the test data, measuring loss and accuracy.
 6. **Model Export**: The trained model results were saved and exported to an HDF5 file named "AlphabetSoupCharity.h5."
+
+The initial model was defined by the following code:
+```python
+
+# Define the model - deep neural net, i.e., the number of input features and hidden nodes for each layer.
+nn = tf.keras.models.Sequential()
+
+# First hidden layer
+nn.add(tf.keras.layers.Dense(units=80, activation="tanh", input_dim=num_cols))
+
+# Second hidden layer
+nn.add(tf.keras.layers.Dense(units=30, activation="tanh"))
+
+# Output layer
+nn.add(tf.keras.layers.Dense(units=1, activation="sigmoid"))
+
+# Check the structure of the model
+nn.summary()
+
+```
 
 ### Optimize the Model
 1. **Repeated Preprocessing**: We repeat the preprocessing steps in a new notebook to ensure consistency.
