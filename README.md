@@ -45,19 +45,22 @@ The data is provided by Alphabet Soup's business team in the form of a CSV conta
 * INCOME_AMT—Income classification
 * SPECIAL_CONSIDERATIONS—Special considerations for application
 * ASK_AMT—Funding amount requested
-* IS_SUCCESSFUL—Was the money used effectively
+* IS_SUCCESSFUL—Was the money used effectively?
 
 ## Methodology
 
 ### Preprocess the Data
-1. Create a Dataframe: The first step is to create a dataframe containing the "charity_data.csv" data and identify the target and feature variables in the dataset.
-2. Drop Columns: We drop the "EIN" and "NAME" columns as they are not relevant for model training.
-3. Unique Values: We determine the number of unique values in each column.
-4. Data Point Count: For columns with more than 10 unique values, we determine the number of data points for each unique value.
-5. Create 'Other' Category: We create a new category called "Other" that contains rare categorical variables to prevent overfitting.
-6. Feature and Target Arrays: We create feature array 'X' and target array 'y' using the preprocessed data.
-7. Split Data: We split the preprocessed data into training and testing datasets.
-8. Scale Data: We scale the data using a StandardScaler fitted to the training data.
+
+Pandas and scikit-learn's `StandardScaler()` function was used to preprocess the data before compiling, training, and evaluating the neural network model. 
+
+1. **Reading the charity_data.csv**: The first step is to create read the "charity_data.csv" file and identify the target and feature variables in the dataset. The target in this data is the "IS_SUCCESSFUL" column, and the feature variables are the remaining columns, minus the columns that are dropped in the next step.
+2. **Drop Columns**: We drop the "EIN" and "NAME" columns as they are not relevant for model training. The "EIN" and "NAME" columns are only used for indentification of the application.
+3. **Unique Values**: We determine the number of unique values in each column.
+4. **Data Point Count**: For columns with more than 10 unique values, we determine the number of data points for each unique value.
+5. **Create 'Other' Category**: We create a new category called "Other" that contains rare categorical variables to prevent overfitting.
+6. **Feature and Target Arrays**: We create feature array 'X' and target array 'y' using the preprocessed data.
+7. **Split Data**: We split the preprocessed data into training and testing datasets.
+8. **Scale Data**: We scale the data using a `StandardScaler()` fitted to the training data.
 
 ### Compile, Train, and Evaluate the Model
 1. Create Neural Network Model: We create a neural network model with a defined number of input features and nodes for each layer.
