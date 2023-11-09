@@ -3,12 +3,12 @@
 ![Thin--1--7](https://github.com/dspataru/deep-learning-challenge/assets/61765352/219f0078-fe95-4ef0-8c6d-eeb51703b7aa)
 
 ## Table of Contents
-* [Background]()
-* [Overview]()
-* [Data Source]()
-* [Methodology]()
-* [Results]()
-* [Summary]()
+* [Background](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#background)
+* [Overview](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#overview)
+* [Data Source](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#data-source)
+* [Methodology](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#methodology)
+* [Results](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#results)
+* [Summary](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#summary)
 
 ## Background
 
