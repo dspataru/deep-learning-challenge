@@ -7,7 +7,7 @@
 * [Overview](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#overview)
 * [Data Source](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#data-source)
 * [Methodology](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#methodology)
-* [Results](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#results)
+* [Results and Analysis](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#results-and-analysis)
 * [Summary](https://github.com/dspataru/deep-learning-challenge/blob/main/README.md#summary)
 
 ## Background
