@@ -53,27 +53,25 @@ The data is provided by Alphabet Soup's business team in the form of a CSV conta
 
 Pandas and scikit-learn's `StandardScaler()` function was used to preprocess the data before compiling, training, and evaluating the neural network model. 
 
-1. **Reading the charity_data.csv**: The first step is to create read the "charity_data.csv" file and identify the target and feature variables in the dataset. The target in this data is the "IS_SUCCESSFUL" column, and the feature variables are the remaining columns, minus the columns that are dropped in the next step.
-2. **Drop Columns**: We drop the "EIN" and "NAME" columns as they are not relevant for model training. The "EIN" and "NAME" columns are only used for indentification of the application.
-3. **Unique Values**: We determine the number of unique values in each column.
-4. **Data Point Count**: For columns with more than 10 unique values, we determine the number of data points for each unique value.
-5. **Create 'Other' Category**: We create a new category called "Other" that contains rare categorical variables to prevent overfitting.
-6. **Feature and Target Arrays**: We create feature array 'X' and target array 'y' using the preprocessed data.
-7. **Split Data**: We split the preprocessed data into training and testing datasets.
-8. **Scale Data**: We scale the data using a `StandardScaler()` fitted to the training data.
+1. **Target and Feature Variables**: The first step is to create read the "charity_data.csv" file and identify the target and feature variables in the dataset. The target variable for our model is "IS_SUCCESSFUL," which indicates whether the funding provided was used effectively (1 for success, 0 for failure), and the feature variables include metadata about the organizations, such as "APPLICATION_TYPE," "AFFILIATION," "CLASSIFICATION," "USE_CASE," "ORGANIZATION," "STATUS," "INCOME_AMT," "SPECIAL_CONSIDERATIONS," and "ASK_AMT."
+2. **Data Cleanup**: We dropped the "EIN" and "NAME" columns as they are identification columns and do not provide valuable information for the model.
+3. **Unique Values**: We determined the number of unique values in each column to understand the diversity of data.
+4. **Binning Rare Categories**: For columns with more than 10 unique values, we binned rare categorical variables into a new category called "Other." This helps prevent overfitting and simplifies the model.
+5. **Encoding Categorical Variables**: We used pd.get_dummies() to encode categorical variables, converting them into numerical form for model input.
+6. **Splitting Data**: The data was split into training and testing datasets to train and evaluate the model's performance.
+7. **Scaling Data**: The data was scaled using a StandardScaler fitted to the training data, ensuring that all features have a similar scale for model convergence.
 
 ### Compile, Train, and Evaluate the Model
-1. Create Neural Network Model: We create a neural network model with a defined number of input features and nodes for each layer.
-2. Hidden Layers and Output Layer: We create hidden layers and an output layer with appropriate activation functions.
-3. Model Structure: We check the structure of the model to ensure it matches our design.
-4. Compile and Train: The model is compiled and trained using the training data.
-5. Model Evaluation: We evaluate the model using the test data to determine the loss and accuracy.
-6. Export Results: The model results are exported to an HDF5 file named "AlphabetSoupCharity.h5".
+1. **Neural Network Model**: We designed a neural network model with input features and nodes in each layer using TensorFlow and Keras.
+2. **Model Architecture**: The neural network model consists of an input layer, one hidden layer with ReLU activation, and an output layer with a sigmoid activation function.
+5. **Training and Evaluation**: The model was compiled and trained with a callback to save weights every five epochs.
+We evaluated the model's performance using the test data, measuring loss and accuracy.
+6. **Model Export**: The trained model results were saved and exported to an HDF5 file named "AlphabetSoupCharity.h5."
 
 ### Optimize the Model
-1. Repeat Preprocessing: We repeat the preprocessing steps in a new Jupyter notebook to ensure consistency.
-2. Create New Model: We create a new neural network model implementing at least three model optimization methods to improve model performance.
-3. Save and Export: The results of the optimized model are saved and exported to an HDF5 file named "AlphabetSoupCharity_Optimization.h5".
+1. **Repeated Preprocessing**: We repeat the preprocessing steps in a new notebook to ensure consistency.
+2. **Create New Model**: We create a new neural network model implementing at least three model optimization methods to improve model performance.
+3. **Save and Export**: The results of the optimized model are saved and exported to an HDF5 file named "AlphabetSoupCharity_Optimization.h5".
 
 
 ## Analysis
